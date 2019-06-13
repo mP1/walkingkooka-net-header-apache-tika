@@ -21,30 +21,33 @@ import org.apache.tika.Tika;
 import walkingkooka.Binary;
 import walkingkooka.net.header.HeaderValueException;
 import walkingkooka.net.header.MediaType;
+import walkingkooka.net.http.server.FileResponse;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
-import java.util.function.BiFunction;
+import java.util.function.Function;
 
 /**
- * A {@link BiFunction} that uses the filename and binary to detect the content type.
+ * A {@link Function} that uses the filename and binary to detect the content type.
  */
-final class ApacheTikaMediaTypeFileContentTypeDetectorBiFunction implements BiFunction<String, Binary, MediaType> {
+final class ApacheTikaMediaTypeFileContentTypeDetectorFunction implements Function<FileResponse, MediaType> {
 
     /**
      * Singleton
      */
-    final static ApacheTikaMediaTypeFileContentTypeDetectorBiFunction INSTANCE = new ApacheTikaMediaTypeFileContentTypeDetectorBiFunction();
+    final static ApacheTikaMediaTypeFileContentTypeDetectorFunction INSTANCE = new ApacheTikaMediaTypeFileContentTypeDetectorFunction();
 
-    private ApacheTikaMediaTypeFileContentTypeDetectorBiFunction() {
+    private ApacheTikaMediaTypeFileContentTypeDetectorFunction() {
         super();
     }
 
     @Override
-    public MediaType apply(final String filename, final Binary binary) {
-        Objects.requireNonNull(filename, "filename");
-        Objects.requireNonNull(binary, "binary");
+    public MediaType apply(final FileResponse file) {
+        Objects.requireNonNull(file, "file");
+
+        final String filename = file.filename();
+        final Binary binary = file.binary();
 
         try (final InputStream inputStream = binary.inputStream()) {
             return MediaType.parse(this.tika.detect(inputStream, filename));

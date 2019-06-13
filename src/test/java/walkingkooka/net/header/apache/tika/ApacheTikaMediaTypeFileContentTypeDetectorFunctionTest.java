@@ -37,18 +37,19 @@ package walkingkooka.net.header.apache.tika;
 import org.junit.jupiter.api.Test;
 import walkingkooka.Binary;
 import walkingkooka.net.header.MediaType;
+import walkingkooka.net.http.server.FileResponse;
 import walkingkooka.test.ClassTesting2;
 import walkingkooka.test.ResourceTesting;
 import walkingkooka.test.ToStringTesting;
 import walkingkooka.type.MemberVisibility;
-import walkingkooka.util.BiFunctionTesting;
+import walkingkooka.util.FunctionTesting;
 
 import java.io.IOException;
 
-final public class ApacheTikaMediaTypeFileContentTypeDetectorBiFunctionTest implements BiFunctionTesting<ApacheTikaMediaTypeFileContentTypeDetectorBiFunction, String, Binary, MediaType>,
-        ClassTesting2<ApacheTikaMediaTypeFileContentTypeDetectorBiFunction>,
+final public class ApacheTikaMediaTypeFileContentTypeDetectorFunctionTest implements FunctionTesting<ApacheTikaMediaTypeFileContentTypeDetectorFunction, FileResponse, MediaType>,
+        ClassTesting2<ApacheTikaMediaTypeFileContentTypeDetectorFunction>,
         ResourceTesting,
-        ToStringTesting<ApacheTikaMediaTypeFileContentTypeDetectorBiFunction> {
+        ToStringTesting<ApacheTikaMediaTypeFileContentTypeDetectorFunction> {
 
     @Test
     public void testWebpImage() throws IOException {
@@ -57,7 +58,7 @@ final public class ApacheTikaMediaTypeFileContentTypeDetectorBiFunctionTest impl
 
     @Test
     public void testHtmlWebPage() throws IOException {
-        this.detectAndCheck("RSPB Dearne Valley Old Moor (cropped) - Wikipedia, the free encyclopedia.html", MediaType.TEXT_PLAIN);
+        this.detectAndCheck("RSPB Dearne Valley Old Moor (cropped) - Wikipedia, the free encyclopedia.html", MediaType.TEXT_HTML);
     }
 
     @Test
@@ -67,25 +68,25 @@ final public class ApacheTikaMediaTypeFileContentTypeDetectorBiFunctionTest impl
 
     private void detectAndCheck(final String file,
                                 final MediaType expected) throws IOException {
-        this.applyAndCheck(this.createBiFunction(),
-                file,
-                Binary.with(this.resourceAsBytes(this.getClass(), this.getClass().getSimpleName() + "/" + file)),
+        this.applyAndCheck(this.createFunction(),
+                FileResponse.with(file,
+                        Binary.with(this.resourceAsBytes(this.getClass(), this.getClass().getSimpleName() + "/" + file))),
                 expected);
     }
 
     @Test
     public void testToString() {
-        this.toStringAndCheck(ApacheTikaMediaTypeFileContentTypeDetectorBiFunction.INSTANCE, ApacheTikaMediaTypeFileContentTypeDetectorBiFunction.INSTANCE.tika.toString());
+        this.toStringAndCheck(ApacheTikaMediaTypeFileContentTypeDetectorFunction.INSTANCE, ApacheTikaMediaTypeFileContentTypeDetectorFunction.INSTANCE.tika.toString());
     }
 
     @Override
-    public ApacheTikaMediaTypeFileContentTypeDetectorBiFunction createBiFunction() {
-        return ApacheTikaMediaTypeFileContentTypeDetectorBiFunction.INSTANCE;
+    public ApacheTikaMediaTypeFileContentTypeDetectorFunction createFunction() {
+        return ApacheTikaMediaTypeFileContentTypeDetectorFunction.INSTANCE;
     }
 
     @Override
-    public Class<ApacheTikaMediaTypeFileContentTypeDetectorBiFunction> type() {
-        return ApacheTikaMediaTypeFileContentTypeDetectorBiFunction.class;
+    public Class<ApacheTikaMediaTypeFileContentTypeDetectorFunction> type() {
+        return ApacheTikaMediaTypeFileContentTypeDetectorFunction.class;
     }
 
     @Override
