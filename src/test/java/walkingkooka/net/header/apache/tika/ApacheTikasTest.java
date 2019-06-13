@@ -37,7 +37,7 @@ package walkingkooka.net.header.apache.tika;
 import walkingkooka.collect.iterator.IteratorTesting;
 import walkingkooka.test.ClassTesting2;
 import walkingkooka.test.PublicStaticHelperTesting;
-import walkingkooka.type.MemberVisibility;
+import walkingkooka.type.JavaVisibility;
 
 import java.lang.reflect.Method;
 
@@ -56,7 +56,7 @@ final public class ApacheTikasTest implements ClassTesting2<ApacheTikas>,
     }
 
     @Override
-    public MemberVisibility typeVisibility() {
-        return MemberVisibility.PUBLIC;
+    public JavaVisibility typeVisibility() {
+        return JavaVisibility.PUBLIC;
     }
 }
