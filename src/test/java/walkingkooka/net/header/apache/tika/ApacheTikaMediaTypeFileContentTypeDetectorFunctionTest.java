@@ -41,7 +41,7 @@ import walkingkooka.net.http.server.FileResponse;
 import walkingkooka.test.ClassTesting2;
 import walkingkooka.test.ResourceTesting;
 import walkingkooka.test.ToStringTesting;
-import walkingkooka.type.MemberVisibility;
+import walkingkooka.type.JavaVisibility;
 import walkingkooka.util.FunctionTesting;
 
 import java.io.IOException;
@@ -90,7 +90,7 @@ final public class ApacheTikaMediaTypeFileContentTypeDetectorFunctionTest implem
     }
 
     @Override
-    public MemberVisibility typeVisibility() {
-        return MemberVisibility.PACKAGE_PRIVATE;
+    public JavaVisibility typeVisibility() {
+        return JavaVisibility.PACKAGE_PRIVATE;
     }
 }
