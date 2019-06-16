@@ -58,7 +58,7 @@ final public class ApacheTikaMediaTypeFileContentTypeDetectorFunctionTest implem
 
     @Test
     public void testHtmlWebPage() throws IOException {
-        this.detectAndCheck("RSPB Dearne Valley Old Moor.html", MediaType.TEXT_HTML);
+        this.detectAndCheck("webpage.html", MediaType.TEXT_HTML);
     }
 
     @Test
