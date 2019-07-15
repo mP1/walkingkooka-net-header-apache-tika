@@ -41,9 +41,8 @@ import walkingkooka.type.JavaVisibility;
 
 import java.lang.reflect.Method;
 
-final public class ApacheTikasTest implements ClassTesting2<ApacheTikas>,
-        IteratorTesting,
-        PublicStaticHelperTesting<ApacheTikas> {
+final public class ApacheTikasTest implements PublicStaticHelperTesting<ApacheTikas>,
+        IteratorTesting{
 
     @Override
     public Class<ApacheTikas> type() {
