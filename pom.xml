@@ -108,7 +108,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.mP1</groupId>
-            <artifactId>walkingkooka</artifactId>
+            <artifactId>walkingkooka-net</artifactId>
             <version>master-SNAPSHOT</version>
         </dependency>
         <dependency>
