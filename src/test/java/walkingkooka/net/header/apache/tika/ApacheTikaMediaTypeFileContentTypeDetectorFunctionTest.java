@@ -37,16 +37,15 @@ package walkingkooka.net.header.apache.tika;
 import org.junit.jupiter.api.Test;
 import walkingkooka.Binary;
 import walkingkooka.net.header.MediaType;
-import walkingkooka.net.http.server.FileResponse;
 import walkingkooka.test.ClassTesting2;
 import walkingkooka.test.ResourceTesting;
 import walkingkooka.test.ToStringTesting;
 import walkingkooka.type.JavaVisibility;
-import walkingkooka.util.FunctionTesting;
+import walkingkooka.util.BiFunctionTesting;
 
 import java.io.IOException;
 
-final public class ApacheTikaMediaTypeFileContentTypeDetectorFunctionTest implements FunctionTesting<ApacheTikaMediaTypeFileContentTypeDetectorFunction, FileResponse, MediaType>,
+final public class ApacheTikaMediaTypeFileContentTypeDetectorFunctionTest implements BiFunctionTesting<ApacheTikaMediaTypeFileContentTypeDetectorFunction, String, Binary, MediaType>,
         ClassTesting2<ApacheTikaMediaTypeFileContentTypeDetectorFunction>,
         ResourceTesting,
         ToStringTesting<ApacheTikaMediaTypeFileContentTypeDetectorFunction> {
@@ -66,11 +65,11 @@ final public class ApacheTikaMediaTypeFileContentTypeDetectorFunctionTest implem
         this.detectAndCheck("file.txt", MediaType.TEXT_PLAIN);
     }
 
-    private void detectAndCheck(final String file,
+    private void detectAndCheck(final String filename,
                                 final MediaType expected) throws IOException {
-        this.applyAndCheck(this.createFunction(),
-                FileResponse.with(file,
-                        Binary.with(this.resourceAsBytes(this.getClass(), this.getClass().getSimpleName() + "/" + file))),
+        this.applyAndCheck(this.createBiFunction(),
+                filename,
+                Binary.with(this.resourceAsBytes(this.getClass(), this.getClass().getSimpleName() + "/" + filename)),
                 expected);
     }
 
@@ -80,7 +79,7 @@ final public class ApacheTikaMediaTypeFileContentTypeDetectorFunctionTest implem
     }
 
     @Override
-    public ApacheTikaMediaTypeFileContentTypeDetectorFunction createFunction() {
+    public ApacheTikaMediaTypeFileContentTypeDetectorFunction createBiFunction() {
         return ApacheTikaMediaTypeFileContentTypeDetectorFunction.INSTANCE;
     }
 
