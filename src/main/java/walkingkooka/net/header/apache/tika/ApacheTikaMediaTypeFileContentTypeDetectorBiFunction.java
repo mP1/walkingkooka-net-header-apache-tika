@@ -31,14 +31,14 @@ import java.util.function.Function;
 /**
  * A {@link Function} that uses the filename and binary to detect the content type.
  */
-final class ApacheTikaMediaTypeFileContentTypeDetectorFunction implements BiFunction<String, Binary, MediaType> {
+final class ApacheTikaMediaTypeFileContentTypeDetectorBiFunction implements BiFunction<String, Binary, MediaType> {
 
     /**
      * Singleton
      */
-    final static ApacheTikaMediaTypeFileContentTypeDetectorFunction INSTANCE = new ApacheTikaMediaTypeFileContentTypeDetectorFunction();
+    final static ApacheTikaMediaTypeFileContentTypeDetectorBiFunction INSTANCE = new ApacheTikaMediaTypeFileContentTypeDetectorBiFunction();
 
-    private ApacheTikaMediaTypeFileContentTypeDetectorFunction() {
+    private ApacheTikaMediaTypeFileContentTypeDetectorBiFunction() {
         super();
     }
 
