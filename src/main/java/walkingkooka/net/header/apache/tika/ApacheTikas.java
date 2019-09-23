@@ -17,18 +17,18 @@
 
 package walkingkooka.net.header.apache.tika;
 
+import walkingkooka.Binary;
 import walkingkooka.net.header.MediaType;
-import walkingkooka.net.http.server.FileResponse;
 import walkingkooka.type.PublicStaticHelper;
 
-import java.util.function.Function;
+import java.util.function.BiFunction;
 
 public final class ApacheTikas implements PublicStaticHelper {
 
     /**
      * {@see ApacheTikaMediaTypeFileContentTypeDetectorFunction}
      */
-    public static Function<FileResponse, MediaType> fileContentTypeDetector() {
+    public static BiFunction<String, Binary, MediaType> fileContentTypeDetector() {
         return ApacheTikaMediaTypeFileContentTypeDetectorFunction.INSTANCE;
     }
 
