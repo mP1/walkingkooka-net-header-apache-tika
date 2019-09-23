@@ -45,10 +45,10 @@ import walkingkooka.util.BiFunctionTesting;
 
 import java.io.IOException;
 
-final public class ApacheTikaMediaTypeFileContentTypeDetectorFunctionTest implements BiFunctionTesting<ApacheTikaMediaTypeFileContentTypeDetectorFunction, String, Binary, MediaType>,
-        ClassTesting2<ApacheTikaMediaTypeFileContentTypeDetectorFunction>,
+final public class ApacheTikaMediaTypeFileContentTypeDetectorBiFunctionTest implements BiFunctionTesting<ApacheTikaMediaTypeFileContentTypeDetectorBiFunction, String, Binary, MediaType>,
+        ClassTesting2<ApacheTikaMediaTypeFileContentTypeDetectorBiFunction>,
         ResourceTesting,
-        ToStringTesting<ApacheTikaMediaTypeFileContentTypeDetectorFunction> {
+        ToStringTesting<ApacheTikaMediaTypeFileContentTypeDetectorBiFunction> {
 
     @Test
     public void testWebpImage() throws IOException {
@@ -75,17 +75,17 @@ final public class ApacheTikaMediaTypeFileContentTypeDetectorFunctionTest implem
 
     @Test
     public void testToString() {
-        this.toStringAndCheck(ApacheTikaMediaTypeFileContentTypeDetectorFunction.INSTANCE, ApacheTikaMediaTypeFileContentTypeDetectorFunction.INSTANCE.tika.toString());
+        this.toStringAndCheck(ApacheTikaMediaTypeFileContentTypeDetectorBiFunction.INSTANCE, ApacheTikaMediaTypeFileContentTypeDetectorBiFunction.INSTANCE.tika.toString());
     }
 
     @Override
-    public ApacheTikaMediaTypeFileContentTypeDetectorFunction createBiFunction() {
-        return ApacheTikaMediaTypeFileContentTypeDetectorFunction.INSTANCE;
+    public ApacheTikaMediaTypeFileContentTypeDetectorBiFunction createBiFunction() {
+        return ApacheTikaMediaTypeFileContentTypeDetectorBiFunction.INSTANCE;
     }
 
     @Override
-    public Class<ApacheTikaMediaTypeFileContentTypeDetectorFunction> type() {
-        return ApacheTikaMediaTypeFileContentTypeDetectorFunction.class;
+    public Class<ApacheTikaMediaTypeFileContentTypeDetectorBiFunction> type() {
+        return ApacheTikaMediaTypeFileContentTypeDetectorBiFunction.class;
     }
 
     @Override

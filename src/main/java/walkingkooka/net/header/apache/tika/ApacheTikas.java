@@ -26,10 +26,10 @@ import java.util.function.BiFunction;
 public final class ApacheTikas implements PublicStaticHelper {
 
     /**
-     * {@see ApacheTikaMediaTypeFileContentTypeDetectorFunction}
+     * {@see ApacheTikaMediaTypeFileContentTypeDetectorBiFunction}
      */
     public static BiFunction<String, Binary, MediaType> fileContentTypeDetector() {
-        return ApacheTikaMediaTypeFileContentTypeDetectorFunction.INSTANCE;
+        return ApacheTikaMediaTypeFileContentTypeDetectorBiFunction.INSTANCE;
     }
 
     /**
