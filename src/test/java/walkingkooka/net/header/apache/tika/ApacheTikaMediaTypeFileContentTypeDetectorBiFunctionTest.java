@@ -36,11 +36,11 @@ package walkingkooka.net.header.apache.tika;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.Binary;
+import walkingkooka.ToStringTesting;
 import walkingkooka.net.header.MediaType;
-import walkingkooka.test.ClassTesting2;
+import walkingkooka.reflect.ClassTesting2;
+import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.test.ResourceTesting;
-import walkingkooka.test.ToStringTesting;
-import walkingkooka.type.JavaVisibility;
 import walkingkooka.util.BiFunctionTesting;
 
 import java.io.IOException;

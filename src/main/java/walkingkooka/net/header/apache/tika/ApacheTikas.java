@@ -19,7 +19,7 @@ package walkingkooka.net.header.apache.tika;
 
 import walkingkooka.Binary;
 import walkingkooka.net.header.MediaType;
-import walkingkooka.type.PublicStaticHelper;
+import walkingkooka.reflect.PublicStaticHelper;
 
 import java.util.function.BiFunction;
 
