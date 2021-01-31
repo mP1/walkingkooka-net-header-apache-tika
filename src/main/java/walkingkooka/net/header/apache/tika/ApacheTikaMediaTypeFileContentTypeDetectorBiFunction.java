@@ -19,7 +19,7 @@ package walkingkooka.net.header.apache.tika;
 
 import org.apache.tika.Tika;
 import walkingkooka.Binary;
-import walkingkooka.net.header.HeaderValueException;
+import walkingkooka.net.header.HeaderException;
 import walkingkooka.net.header.MediaType;
 
 import java.io.IOException;
@@ -51,7 +51,7 @@ final class ApacheTikaMediaTypeFileContentTypeDetectorBiFunction implements BiFu
         try (final InputStream inputStream = binary.inputStream()) {
             return MediaType.parse(this.tika.detect(inputStream, filename));
         } catch (final IOException cause) {
-            throw new HeaderValueException("Failed to detect content type for " + filename + " " + binary);
+            throw new HeaderException("Failed to detect content type for " + filename + " " + binary);
         }
     }
 
