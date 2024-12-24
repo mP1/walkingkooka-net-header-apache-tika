@@ -17,25 +17,22 @@
 
 package walkingkooka.net.header.apache.tika;
 
-import walkingkooka.Binary;
-import walkingkooka.net.header.MediaType;
+import walkingkooka.net.header.MediaTypeDetector;
 import walkingkooka.reflect.PublicStaticHelper;
 
-import java.util.function.BiFunction;
-
-public final class ApacheTikas implements PublicStaticHelper {
+public final class ApacheTikaMediaTypeDetectors implements PublicStaticHelper {
 
     /**
-     * {@see ApacheTikaMediaTypeFileContentTypeDetectorBiFunction}
+     * {@see ApacheTikaMediaTypeDetector}
      */
-    public static BiFunction<String, Binary, MediaType> fileContentTypeDetector() {
-        return ApacheTikaMediaTypeFileContentTypeDetectorBiFunction.INSTANCE;
+    public static MediaTypeDetector apacheTika() {
+        return ApacheTikaMediaTypeDetector.INSTANCE;
     }
 
     /**
      * Stop creation
      */
-    private ApacheTikas() {
+    private ApacheTikaMediaTypeDetectors() {
         throw new UnsupportedOperationException();
     }
 }
