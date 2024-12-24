@@ -19,39 +19,45 @@ package walkingkooka.net.header.apache.tika;
 
 import org.apache.tika.Tika;
 import walkingkooka.Binary;
-import walkingkooka.net.header.HeaderException;
 import walkingkooka.net.header.MediaType;
+import walkingkooka.net.header.MediaTypeDetector;
+import walkingkooka.text.CharSequences;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
-import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
  * A {@link Function} that uses the filename and binary to detect the content type.
  */
-final class ApacheTikaMediaTypeFileContentTypeDetectorBiFunction implements BiFunction<String, Binary, MediaType> {
+final class ApacheTikaMediaTypeDetector implements MediaTypeDetector {
 
     /**
      * Singleton
      */
-    final static ApacheTikaMediaTypeFileContentTypeDetectorBiFunction INSTANCE = new ApacheTikaMediaTypeFileContentTypeDetectorBiFunction();
+    final static ApacheTikaMediaTypeDetector INSTANCE = new ApacheTikaMediaTypeDetector();
 
-    private ApacheTikaMediaTypeFileContentTypeDetectorBiFunction() {
+    private ApacheTikaMediaTypeDetector() {
         super();
     }
 
     @Override
-    public MediaType apply(final String filename,
+    public MediaType detect(final String filename,
                            final Binary binary) {
-        Objects.requireNonNull(filename, "file");
+        CharSequences.failIfNullOrEmpty(filename, "filename");
         Objects.requireNonNull(binary, "binary");
 
         try (final InputStream inputStream = binary.inputStream()) {
             return MediaType.parse(this.tika.detect(inputStream, filename));
         } catch (final IOException cause) {
-            throw new HeaderException("Failed to detect content type for " + filename + " " + binary);
+            throw new IllegalArgumentException(
+                    "Failed to detect content type for " +
+                            CharSequences.quoteAndEscape(filename) +
+                            " " +
+                            binary,
+                    cause
+            );
         }
     }
 

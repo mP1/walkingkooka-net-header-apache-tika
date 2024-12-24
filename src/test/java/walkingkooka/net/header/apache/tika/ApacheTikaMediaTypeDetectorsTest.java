@@ -40,12 +40,12 @@ import walkingkooka.reflect.PublicStaticHelperTesting;
 
 import java.lang.reflect.Method;
 
-final public class ApacheTikasTest implements PublicStaticHelperTesting<ApacheTikas>,
+final public class ApacheTikaMediaTypeDetectorsTest implements PublicStaticHelperTesting<ApacheTikaMediaTypeDetectors>,
         IteratorTesting{
 
     @Override
-    public Class<ApacheTikas> type() {
-        return ApacheTikas.class;
+    public Class<ApacheTikaMediaTypeDetectors> type() {
+        return ApacheTikaMediaTypeDetectors.class;
     }
 
     @Override
