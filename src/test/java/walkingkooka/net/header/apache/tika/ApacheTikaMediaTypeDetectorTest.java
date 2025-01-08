@@ -46,45 +46,45 @@ import walkingkooka.test.ResourceTesting;
 import java.io.IOException;
 
 final public class ApacheTikaMediaTypeDetectorTest implements MediaTypeDetectorTesting2<ApacheTikaMediaTypeDetector>,
-        ClassTesting2<ApacheTikaMediaTypeDetector>,
-        ResourceTesting,
-        ToStringTesting<ApacheTikaMediaTypeDetector> {
+    ClassTesting2<ApacheTikaMediaTypeDetector>,
+    ResourceTesting,
+    ToStringTesting<ApacheTikaMediaTypeDetector> {
 
     @Test
     public void testDetectWebpImage() throws IOException {
         this.detectAndCheck(
-                "360px-RSPB_Dearne_Valley_Old_Moor_(cropped).webp",
-                MediaType.parse("image/webp")
+            "360px-RSPB_Dearne_Valley_Old_Moor_(cropped).webp",
+            MediaType.parse("image/webp")
         );
     }
 
     @Test
     public void testDetectHtmlWebPage() throws IOException {
         this.detectAndCheck(
-                "webpage.html",
-                MediaType.TEXT_HTML
+            "webpage.html",
+            MediaType.TEXT_HTML
         );
     }
 
     @Test
     public void testDetectTextFile() throws IOException {
         this.detectAndCheck(
-                "file.txt",
-                MediaType.TEXT_PLAIN
+            "file.txt",
+            MediaType.TEXT_PLAIN
         );
     }
 
     private void detectAndCheck(final String filename,
                                 final MediaType expected) throws IOException {
         this.detectAndCheck(
-                filename,
-                Binary.with(
-                        this.resourceAsBytes(
-                                this.getClass(),
-                                this.getClass().getSimpleName() + "/" + filename
-                        )
-                ),
-                expected);
+            filename,
+            Binary.with(
+                this.resourceAsBytes(
+                    this.getClass(),
+                    this.getClass().getSimpleName() + "/" + filename
+                )
+            ),
+            expected);
     }
 
     @Override
@@ -97,8 +97,8 @@ final public class ApacheTikaMediaTypeDetectorTest implements MediaTypeDetectorT
     @Test
     public void testToString() {
         this.toStringAndCheck(
-                ApacheTikaMediaTypeDetector.INSTANCE,
-                ApacheTikaMediaTypeDetector.INSTANCE.tika.toString()
+            ApacheTikaMediaTypeDetector.INSTANCE,
+            ApacheTikaMediaTypeDetector.INSTANCE.tika.toString()
         );
     }
 
