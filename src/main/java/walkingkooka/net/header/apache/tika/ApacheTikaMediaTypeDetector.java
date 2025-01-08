@@ -44,7 +44,7 @@ final class ApacheTikaMediaTypeDetector implements MediaTypeDetector {
 
     @Override
     public MediaType detect(final String filename,
-                           final Binary binary) {
+                            final Binary binary) {
         CharSequences.failIfNullOrEmpty(filename, "filename");
         Objects.requireNonNull(binary, "binary");
 
@@ -52,11 +52,11 @@ final class ApacheTikaMediaTypeDetector implements MediaTypeDetector {
             return MediaType.parse(this.tika.detect(inputStream, filename));
         } catch (final IOException cause) {
             throw new IllegalArgumentException(
-                    "Failed to detect content type for " +
-                            CharSequences.quoteAndEscape(filename) +
-                            " " +
-                            binary,
-                    cause
+                "Failed to detect content type for " +
+                    CharSequences.quoteAndEscape(filename) +
+                    " " +
+                    binary,
+                cause
             );
         }
     }
