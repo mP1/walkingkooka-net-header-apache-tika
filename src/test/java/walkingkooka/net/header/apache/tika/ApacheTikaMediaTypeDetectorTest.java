@@ -48,7 +48,7 @@ import java.io.IOException;
 final public class ApacheTikaMediaTypeDetectorTest implements MediaTypeDetectorTesting2<ApacheTikaMediaTypeDetector>,
     ClassTesting2<ApacheTikaMediaTypeDetector>,
     ResourceTesting,
-    ToStringTesting<ApacheTikaMediaTypeDetector> {
+    ToStringTesting {
 
     @Test
     public void testDetectWebpImage() throws IOException {
